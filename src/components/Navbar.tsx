@@ -34,108 +34,126 @@ export function Navbar() {
   const solid = scrolled || open;
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        solid
-          ? "border-b border-line/80 bg-paper/92 text-ink shadow-[0_1px_0_rgba(27,25,22,0.04)] backdrop-blur-md"
-          : "border-b border-white/10 bg-ink/45 text-cream backdrop-blur-sm"
-      }`}
-    >
-      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-3 px-4 md:h-[4.75rem] md:px-8">
-        <a href="#beranda" className="flex min-w-0 flex-col leading-none" onClick={close}>
-          <span className="font-serif text-[1.15rem] tracking-[0.14em] uppercase md:text-[1.35rem] md:tracking-[0.18em]">
-            Arsitaru
-          </span>
-          <span
-            className={`mt-1 text-[0.62rem] tracking-[0.32em] uppercase ${
-              solid ? "text-muted" : "text-cream/70"
-            }`}
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          solid
+            ? "border-b border-line/80 bg-paper/92 text-ink shadow-[0_1px_0_rgba(27,25,22,0.04)] backdrop-blur-md"
+            : "border-b border-white/10 bg-ink/45 text-cream backdrop-blur-sm"
+        }`}
+      >
+        <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-2 px-4 md:h-[4.75rem] md:gap-3 md:px-8">
+          <a
+            href="#beranda"
+            className="flex min-w-0 flex-col leading-none"
+            onClick={close}
           >
-            Arsitek
-          </span>
-        </a>
-
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigasi utama">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-[0.78rem] tracking-[0.18em] uppercase transition-opacity hover:opacity-70 ${
-                solid ? "text-ink-soft" : "text-cream/90"
+            <span className="font-serif text-[1.05rem] tracking-[0.12em] uppercase md:text-[1.35rem] md:tracking-[0.18em]">
+              Arsitaru
+            </span>
+            <span
+              className={`mt-1 text-[0.58rem] tracking-[0.28em] uppercase md:text-[0.62rem] md:tracking-[0.32em] ${
+                solid ? "text-muted" : "text-cream/70"
               }`}
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <a
-            href={site.mailto}
-            className={`inline-flex items-center border px-2.5 py-2 text-[0.62rem] tracking-[0.16em] uppercase sm:px-4 sm:py-2.5 sm:text-[0.72rem] sm:tracking-[0.2em] transition-colors ${
-              solid
-                ? "border-ink bg-ink text-cream hover:bg-ink-soft"
-                : "border-cream/80 bg-cream text-ink hover:bg-sand"
-            }`}
-          >
-            Konsultasi
-          </a>
-
-          <button
-            type="button"
-            className="inline-flex h-11 w-11 items-center justify-center lg:hidden"
-            aria-expanded={open}
-            aria-controls={menuId}
-            aria-label={open ? "Tutup menu" : "Buka menu"}
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span className="sr-only">{open ? "Tutup menu" : "Buka menu"}</span>
-            <span className="relative block h-3.5 w-5">
-              <span
-                className={`absolute left-0 h-px w-full transition-all ${
-                  solid ? "bg-ink" : "bg-cream"
-                } ${open ? "top-1.5 rotate-45" : "top-0"}`}
-              />
-              <span
-                className={`absolute left-0 top-1.5 h-px w-full transition-opacity ${
-                  solid ? "bg-ink" : "bg-cream"
-                } ${open ? "opacity-0" : "opacity-100"}`}
-              />
-              <span
-                className={`absolute left-0 h-px w-full transition-all ${
-                  solid ? "bg-ink" : "bg-cream"
-                } ${open ? "top-1.5 -rotate-45" : "top-3.5"}`}
-              />
+              Arsitek
             </span>
-          </button>
-        </div>
-      </div>
-
-      <div
-        id={menuId}
-        hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-[4.25rem] overflow-y-auto border-t border-line bg-paper text-ink md:top-[4.75rem] lg:hidden"
-      >
-        <nav className="mx-auto flex max-w-6xl flex-col px-5 py-6" aria-label="Menu seluler">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={close}
-              className="border-b border-line/70 py-4 font-serif text-3xl"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href={site.mailto}
-            onClick={close}
-            className="mt-6 inline-flex items-center justify-center border border-ink bg-ink px-5 py-3 text-[0.72rem] tracking-[0.2em] uppercase text-cream"
-          >
-            Konsultasi
           </a>
-        </nav>
-      </div>
-    </header>
+
+          <nav
+            className="hidden items-center gap-8 lg:flex"
+            aria-label="Navigasi utama"
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`text-[0.78rem] tracking-[0.18em] uppercase transition-opacity hover:opacity-70 ${
+                  solid ? "text-ink-soft" : "text-cream/90"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+            <a
+              href={site.mailto}
+              className={`inline-flex items-center border px-2.5 py-2 text-[0.6rem] tracking-[0.14em] uppercase sm:px-4 sm:py-2.5 sm:text-[0.72rem] sm:tracking-[0.2em] transition-colors ${
+                solid
+                  ? "border-ink bg-ink text-cream hover:bg-ink-soft"
+                  : "border-cream/80 bg-cream text-ink hover:bg-sand"
+              }`}
+            >
+              Konsultasi
+            </a>
+
+            <button
+              type="button"
+              className={`inline-flex h-10 w-10 items-center justify-center border lg:hidden ${
+                solid ? "border-line" : "border-cream/40"
+              }`}
+              aria-expanded={open}
+              aria-controls={menuId}
+              aria-label={open ? "Tutup menu" : "Buka menu"}
+              onClick={() => setOpen((value) => !value)}
+            >
+              <span className="sr-only">{open ? "Tutup menu" : "Buka menu"}</span>
+              <span className="relative block h-3.5 w-5">
+                <span
+                  className={`absolute left-0 h-px w-full transition-all ${
+                    solid ? "bg-ink" : "bg-cream"
+                  } ${open ? "top-1.5 rotate-45" : "top-0"}`}
+                />
+                <span
+                  className={`absolute left-0 top-1.5 h-px w-full transition-opacity ${
+                    solid ? "bg-ink" : "bg-cream"
+                  } ${open ? "opacity-0" : "opacity-100"}`}
+                />
+                <span
+                  className={`absolute left-0 h-px w-full transition-all ${
+                    solid ? "bg-ink" : "bg-cream"
+                  } ${open ? "top-1.5 -rotate-45" : "top-3.5"}`}
+                />
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {open ? (
+        <div
+          id={menuId}
+          className="fixed inset-x-0 bottom-0 top-[4.25rem] z-40 overflow-y-auto bg-paper text-ink md:top-[4.75rem] lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+        >
+          <nav
+            className="mx-auto flex min-h-full max-w-6xl flex-col px-5 py-6"
+            aria-label="Menu seluler"
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={close}
+                className="border-b border-line/70 py-4 font-serif text-3xl"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href={site.mailto}
+              onClick={close}
+              className="mt-6 inline-flex items-center justify-center border border-ink bg-ink px-5 py-3 text-[0.72rem] tracking-[0.2em] uppercase text-cream"
+            >
+              Konsultasi
+            </a>
+          </nav>
+        </div>
+      ) : null}
+    </>
   );
 }
