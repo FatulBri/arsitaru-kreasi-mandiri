@@ -41,9 +41,9 @@ export function Navbar() {
           : "border-b border-white/10 bg-ink/45 text-cream backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 md:h-[4.75rem] md:px-8">
-        <a href="#beranda" className="group flex flex-col leading-none" onClick={close}>
-          <span className="font-serif text-[1.35rem] tracking-[0.18em] uppercase">
+      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-3 px-4 md:h-[4.75rem] md:px-8">
+        <a href="#beranda" className="flex min-w-0 flex-col leading-none" onClick={close}>
+          <span className="font-serif text-[1.15rem] tracking-[0.14em] uppercase md:text-[1.35rem] md:tracking-[0.18em]">
             Arsitaru
           </span>
           <span
@@ -69,10 +69,10 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <a
             href={site.mailto}
-            className={`inline-flex items-center border px-3 py-2 text-[0.65rem] tracking-[0.2em] uppercase sm:px-4 sm:py-2.5 sm:text-[0.72rem] transition-colors ${
+            className={`inline-flex items-center border px-2.5 py-2 text-[0.62rem] tracking-[0.16em] uppercase sm:px-4 sm:py-2.5 sm:text-[0.72rem] sm:tracking-[0.2em] transition-colors ${
               solid
                 ? "border-ink bg-ink text-cream hover:bg-ink-soft"
                 : "border-cream/80 bg-cream text-ink hover:bg-sand"
@@ -114,7 +114,7 @@ export function Navbar() {
       <div
         id={menuId}
         hidden={!open}
-        className="min-h-[calc(100svh-4.25rem)] border-t border-line bg-paper text-ink lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-[4.25rem] overflow-y-auto border-t border-line bg-paper text-ink md:top-[4.75rem] lg:hidden"
       >
         <nav className="mx-auto flex max-w-6xl flex-col px-5 py-6" aria-label="Menu seluler">
           {navItems.map((item) => (
