@@ -11,7 +11,7 @@ export function About() {
     >
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-12 md:px-8 md:py-28">
         <Reveal className="md:col-span-6">
-          <div className="relative aspect-[4/3] overflow-hidden bg-paper-deep">
+          <div className="relative aspect-[4/3] overflow-hidden bg-paper-deep ring-1 ring-line">
             <Image
               src="/images/about/studio.jpg"
               alt="Ruang kerja studio dengan meja gambar, material kayu, dan jendela ke taman tropis — gambar placeholder, dapat diganti."

@@ -38,7 +38,7 @@ export function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid
           ? "border-b border-line/80 bg-paper/92 text-ink shadow-[0_1px_0_rgba(27,25,22,0.04)] backdrop-blur-md"
-          : "border-b border-transparent bg-transparent text-cream"
+          : "border-b border-white/10 bg-ink/45 text-cream backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 md:h-[4.75rem] md:px-8">
@@ -72,10 +72,10 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href={site.mailto}
-            className={`hidden text-[0.72rem] tracking-[0.2em] uppercase sm:inline-flex items-center border px-4 py-2.5 transition-colors ${
+            className={`inline-flex items-center border px-3 py-2 text-[0.65rem] tracking-[0.2em] uppercase sm:px-4 sm:py-2.5 sm:text-[0.72rem] transition-colors ${
               solid
                 ? "border-ink bg-ink text-cream hover:bg-ink-soft"
-                : "border-cream/70 text-cream hover:bg-cream hover:text-ink"
+                : "border-cream/80 bg-cream text-ink hover:bg-sand"
             }`}
           >
             Konsultasi
@@ -114,7 +114,7 @@ export function Navbar() {
       <div
         id={menuId}
         hidden={!open}
-        className="border-t border-line bg-paper text-ink lg:hidden"
+        className="min-h-[calc(100svh-4.25rem)] border-t border-line bg-paper text-ink lg:hidden"
       >
         <nav className="mx-auto flex max-w-6xl flex-col px-5 py-6" aria-label="Menu seluler">
           {navItems.map((item) => (

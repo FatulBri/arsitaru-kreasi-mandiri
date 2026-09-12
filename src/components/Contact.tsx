@@ -17,7 +17,9 @@ export function Contact() {
     const body = encodeURIComponent(
       `Nama: ${name}\nEmail: ${email}\n\n${message}`,
     );
-    window.location.href = `${site.mailto}?subject=${subject}&body=${body}`;
+    window.location.assign(
+      `mailto:${site.email}?subject=${subject}&body=${body}`,
+    );
     setStatus("ready");
   };
 

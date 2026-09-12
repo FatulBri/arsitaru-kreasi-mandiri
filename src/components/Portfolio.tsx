@@ -3,10 +3,10 @@ import { Reveal } from "@/components/Reveal";
 import { portfolio, site } from "@/lib/site";
 
 const spanClass: Record<string, string> = {
-  featured: "md:col-span-8 md:row-span-2",
-  tall: "md:col-span-4",
-  wide: "md:col-span-8",
-  square: "md:col-span-4",
+  featured: "md:col-span-7",
+  tall: "md:col-span-5",
+  wide: "md:col-span-7",
+  square: "md:col-span-5",
 };
 
 export function Portfolio() {
@@ -40,69 +40,64 @@ export function Portfolio() {
           </a>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-12">
+        <div className="mt-14 grid grid-cols-1 gap-x-5 gap-y-12 md:grid-cols-12">
           {portfolio.map((item) => {
-            const card = (
-              <>
-                <div
-                  className={`relative ${
-                    item.span === "featured"
-                      ? "aspect-[4/3] md:aspect-[5/4]"
-                      : item.span === "tall"
-                        ? "aspect-[3/4]"
-                        : item.span === "wide"
-                          ? "aspect-[16/10]"
-                          : "aspect-[4/3]"
-                  }`}
-                >
-                  <Image
-                    src={item.image}
-                    alt={
-                      item.verified
-                        ? `${item.title}, ${item.location}. Foto ilustratif placeholder hingga foto proyek resmi dipasang.`
-                        : `${item.title}. Gambar placeholder, bukan proyek terverifikasi.`
-                    }
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(min-width: 768px) 60vw, 100vw"
-                  />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"
-                    aria-hidden="true"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-5 text-cream md:p-7">
-                    <p className="text-[0.65rem] tracking-[0.22em] uppercase text-sand">
-                      {item.verified ? "Proyek Arsitag" : "Placeholder"}
-                    </p>
-                    <h3 className="mt-2 font-serif text-2xl md:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-cream/80">{item.location}</p>
-                    <p className="mt-2 text-xs leading-relaxed text-cream/70">
-                      {item.note}
-                    </p>
-                  </div>
-                </div>
-              </>
+            const media = (
+              <div
+                className={`relative overflow-hidden bg-paper-deep ${
+                  item.span === "featured"
+                    ? "aspect-[4/3]"
+                    : item.span === "tall"
+                      ? "aspect-[4/5]"
+                      : item.span === "wide"
+                        ? "aspect-[16/10]"
+                        : "aspect-[4/3]"
+                }`}
+              >
+                <Image
+                  src={item.image}
+                  alt={
+                    item.verified
+                      ? `${item.title}, ${item.location}. Foto ilustratif placeholder hingga foto proyek resmi dipasang.`
+                      : `${item.title}. Gambar placeholder, bukan proyek terverifikasi.`
+                  }
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(min-width: 768px) 60vw, 100vw"
+                />
+              </div>
+            );
+
+            const caption = (
+              <div className="mt-4">
+                <p className="text-[0.65rem] tracking-[0.22em] uppercase text-taupe">
+                  {item.verified ? "Proyek Arsitag" : "Placeholder"}
+                </p>
+                <h3 className="mt-2 font-serif text-2xl md:text-3xl">{item.title}</h3>
+                <p className="mt-1 text-sm text-ink-soft">{item.location}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted">{item.note}</p>
+              </div>
             );
 
             return (
               <Reveal
                 key={item.id}
-                className={spanClass[item.span] ?? "md:col-span-4"}
+                className={spanClass[item.span] ?? "md:col-span-5"}
               >
                 {item.href ? (
                   <a
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative block overflow-hidden bg-paper-deep"
+                    className="group block"
                   >
-                    {card}
+                    {media}
+                    {caption}
                   </a>
                 ) : (
-                  <article className="group relative overflow-hidden bg-paper-deep">
-                    {card}
+                  <article className="group">
+                    {media}
+                    {caption}
                   </article>
                 )}
               </Reveal>
